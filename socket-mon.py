@@ -4,9 +4,7 @@ import collections
 from collections import Counter 
 
 
-socket_connections = psutil.net_connections()
-
-socket_connection_tu = (socket_connections[1])
+socket_connections = psutil.net_connections(kind="tcp")
 
 final_dic={}
 
@@ -23,8 +21,7 @@ for a in socket_connections:
                 final_dic[a.pid].append(final_list)
     new_dic = {}
 for keys in final_dic:
-    new_dic[keys] = len(final_dic[keys])
-    
+    new_dic[keys] = len(final_dic[keys])   
 print '"Pid","laddr","raddr","Status"'
 for key, value in sorted(new_dic.iteritems(), key=lambda (k,v): (v,k), reverse=True):
     for a in final_dic[key]: 
