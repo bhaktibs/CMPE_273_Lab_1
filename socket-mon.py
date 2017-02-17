@@ -4,7 +4,7 @@ import collections
 from collections import Counter 
 
 
-socket_connections = psutil.net_connections(kind="tcp")
+socket_connections = psutil.net_connections(kind='tcp')
 
 final_dic={}
 
